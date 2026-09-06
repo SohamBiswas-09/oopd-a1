@@ -1,4 +1,6 @@
 #!/bin/bash
+# Roll No : MT26145
+# Name : Soham Biswas 
 
 nasm -f elf64 syscall.S -o syscall.o
 
