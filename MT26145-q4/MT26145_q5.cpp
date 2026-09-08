@@ -1,3 +1,6 @@
+// Roll No : MT26145
+// Name : Soham Biswas
+
 #include "basicIO.h"
 
 const int MAX_NAME_LENGTH = 100;
@@ -7,12 +10,14 @@ extern "C" long syscall6(long number, long arg1, long arg2,
 
 
 bool isYes(const char* text) {
-    return text[0] == 'y' || text[0] == 'Y';
+    return (text[0] == 'y' || text[0] == 'Y') &&
+           text[1] == '\0';
 }
 
 
 bool isNo(const char* text) {
-    return text[0] == 'n' || text[0] == 'N';
+    return (text[0] == 'n' || text[0] == 'N') &&
+           text[1] == '\0';
 }
 
 
@@ -194,7 +199,11 @@ int main() {
 
         printNames(names, n);
     }
-    else if (!isNo(choice)) {
+    else if (isNo(choice)) {
+
+        // No change required.
+    }
+    else {
 
         io.outputstring(
             "Invalid response. No change made.\n"
