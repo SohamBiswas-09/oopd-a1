@@ -17,7 +17,9 @@ Object-Oriented Programming and Design course.
    In this part, we created a C++ program named `MT26145_q2.cpp` which does
    nothing except return `0`. It was compiled using `g++` options excluding
    the standard library files. The compilation command was placed in
-   `MT26145_build_q2.sh` and then pushed to Git successfully.
+   `MT26145_build_q2.sh`. The program is built by running this shell script,
+   which compiles the C++ source without the standard libraries and removes
+   the temporary object file.
 
 3. **Q3 - Name, Age and Confirmation**  
    In this part, the program was extended to take the user's name and age
@@ -25,20 +27,27 @@ Object-Oriented Programming and Design course.
    provided `basicIO` functions and the NASM `syscall.S` file without using
    standard C/C++ libraries. The program was implemented in
    `MT26145_q3.cpp`, with the compilation commands in
-   `MT26145_build_q3.sh`. It was pushed to Git successfully.
+   `MT26145_build_q3.sh`. The program is built by running this shell script,
+   which assembles `syscall.S`, compiles the C++ source without standard
+   libraries, links the files, and removes temporary object files.
 
 4. **Q4 - Dynamic Allocation of Names**  
    In this part, the program was extended to determine the number of names
    required and allocate memory for them. Dynamic memory allocation was
    performed using `mmap`, with 100 bytes allocated for each name to prevent
    overflow. The implementation was done in `MT26145_q4.cpp`, with the
-   compilation commands provided in `MT26145_build_q4.sh`.
+   compilation commands provided in `MT26145_build_q4.sh`. The program is
+   built by running this shell script, which assembles the system-call file,
+   compiles the C++ source without standard libraries, links the program,
+   and removes temporary object files.
 
 5. **Q5 - Changing the Number of Names**  
    In this part, the program was extended to allow the number of names to
    be changed after the initial input. The code was implemented in
    `MT26145_q5.cpp`, with the compilation commands provided in
-   `MT26145_build_q5.sh`.
+   `MT26145_build_q5.sh`. The program is built by running this shell script,
+   which assembles the system-call file, compiles the C++ source without
+   standard libraries, links the program, and removes temporary object files.
 
 The assignment requires the use of classes, objects and C++ operators.
 Direct system calls must be used, while standard C/C++ libraries,
