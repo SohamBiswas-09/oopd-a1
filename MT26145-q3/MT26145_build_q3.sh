@@ -1,10 +1,11 @@
 #!/bin/bash
+
 # Roll No : MT26145
-# Name : Soham Biswas 
+# Name : Soham Biswas
 
 nasm -f elf64 syscall.S -o syscall.o
 
-g++ -c -nostdlib -nodefaultlibs -nostartfiles q3.cpp -o q3.o
+g++ -c -nostdlib -nodefaultlibs -nostartfiles MT26145_q3.cpp -o q3.o
 
 g++ -c -nostdlib -nodefaultlibs -nostartfiles basicIO.cpp -o basicIO.o
 

@@ -27,18 +27,56 @@ public:
     void display() {
         io.outputstring("Name: ");
         io.outputstring(name);
-        io.terminate();
+        io.outputstring("\n");
 
         io.outputstring("Age: ");
         io.outputint(age);
-        io.terminate();
+        io.outputstring("\n");
     }
 };
+
+bool isValidAge(const char* text, int& value) {
+    if (text[0] == '\0') {
+        return false;
+    }
+
+    int i = 0;
+    long number = 0;
+
+    while (text[i] != '\0') {
+
+        if (text[i] < '0' || text[i] > '9') {
+            return false;
+        }
+
+        number = number * 10 + (text[i] - '0');
+
+        if (number > 2147483647) {
+            return false;
+        }
+
+        i++;
+    }
+
+    value = (int)number;
+    return true;
+}
+
+bool isYes(const char* text) {
+    return text[0] == 'y' &&
+           text[1] == '\0';
+}
+
+bool isNo(const char* text) {
+    return text[0] == 'n' &&
+           text[1] == '\0';
+}
 
 int main() {
     Person person;
 
     char nameInput[100];
+    char ageInput[32];
     char response[10];
 
     io.activateInput();
@@ -47,9 +85,19 @@ int main() {
     io.inputstring(nameInput, 100);
     person.setName(nameInput);
 
-    io.outputstring("Enter your age: ");
-    int ageInput = io.inputint();
-    person.setAge(ageInput);
+    while (true) {
+        io.outputstring("Enter your age: ");
+        io.inputstring(ageInput, 32);
+
+        int ageValue;
+
+        if (isValidAge(ageInput, ageValue)) {
+            person.setAge(ageValue);
+            break;
+        }
+
+        io.outputstring("Invalid age. Please enter a number.\n");
+    }
 
     io.outputstring("\nYou entered:\n");
     person.display();
@@ -58,20 +106,19 @@ int main() {
         io.outputstring("\nIs this information correct? (y/n): ");
         io.inputstring(response, 10);
 
-        if (response[0] == 'y' || response[0] == 'Y') {
-            io.outputstring("Confirmed.");
+        if (isYes(response)) {
+            io.outputstring("Confirmed.\n");
             io.terminate();
             break;
         }
 
-        if (response[0] == 'n' || response[0] == 'N') {
-            io.outputstring("Not confirmed.");
+        if (isNo(response)) {
+            io.outputstring("Not confirmed.\n");
             io.terminate();
             break;
         }
 
-        io.outputstring("Invalid response. Please enter y or n.");
-        io.terminate();
+        io.outputstring("Invalid response. Please enter y or n.\n");
     }
 
     return 0;
