@@ -30,10 +30,7 @@ public:
         count = n;
         names = 0;
 
-        /*
-         * Each name requires 100 bytes.
-         * Check the multiplication before allocating.
-         */
+        
         if ((unsigned long)n >
             18446744073709551615UL / 100UL) {
             return;
@@ -42,13 +39,7 @@ public:
         unsigned long size =
             (unsigned long)n * 100UL;
 
-        /*
-         * mmap system call
-         *
-         * syscall number = 9
-         * PROT_READ | PROT_WRITE = 3
-         * MAP_PRIVATE | MAP_ANONYMOUS = 34
-         */
+       
         long result = syscall6(
             9,
             0,
@@ -72,11 +63,6 @@ public:
             unsigned long size =
                 (unsigned long)count * 100UL;
 
-            /*
-             * munmap system call
-             *
-             * syscall number = 11
-             */
             syscall6(
                 11,
                 (long)names,
@@ -100,21 +86,8 @@ public:
             io.outputint(i + 1);
             io.outputstring(": ");
 
-            /*
-             * 100 bytes = maximum 99 characters
-             * plus the null terminator.
-             */
             io.inputstring(names[i], 100);
 
-            /*
-             * If the buffer is completely full,
-             * the user may have entered more than
-             * 99 characters.
-             *
-             * Discard the remaining characters until
-             * the newline so they cannot become the
-             * next name.
-             */
             if (names[i][98] != '\0') {
                 char ch;
 
