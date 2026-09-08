@@ -32,11 +32,6 @@ char (*allocateNames(int count))[MAX_NAME_LENGTH] {
 
     long size = (long)count * MAX_NAME_LENGTH;
 
-    // mmap system call
-    // syscall number = 9
-    // PROT_READ | PROT_WRITE = 3
-    // MAP_PRIVATE | MAP_ANONYMOUS = 0x22
-
     long address = syscall6(
         9,
         0,
@@ -62,9 +57,6 @@ void freeNames(char (*names)[MAX_NAME_LENGTH], int count) {
     }
 
     long size = (long)count * MAX_NAME_LENGTH;
-
-    // munmap system call
-    // syscall number = 11
 
     syscall6(
         11,
