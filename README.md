@@ -64,6 +64,10 @@ prepare the build command for `MT26145_q2.cpp` and
 compile the program while excluding the standard libraries and startup
 files. Temporary object files were also removed after compilation.
 
+Prompts:
+"Explain the g++ compilation options required to compile a C++ program without using the standard C/C++ libraries"
+
+"Help me create a shell script for compiling the Q2 C++ program using the required g++ options."
 ### Q3
 
 LLM was used to understand how the provided `basicIO` functions and NASM
@@ -71,6 +75,12 @@ LLM was used to understand how the provided `basicIO` functions and NASM
 issues. The main challenge was connecting the C++ program with the
 provided assembly system-call implementation while avoiding standard
 C/C++ libraries.
+
+Prompts:
+"Explain how the provided basicIO.cpp, basicIO.h and syscall.S files work together and 
+how I can write the Q3 C++ program without using standard C/C++ libraries."
+
+"Help me implement the Q3 requirements for taking the user's name and age, validating the input, asking for y/n confirmation."
 
 ### Q4
 
@@ -80,6 +90,13 @@ names and to review input validation and buffer-overflow prevention in
 and linker issues while building the program with direct system calls,
 which were resolved during development.
 
+Prompts:
+"Explain how to implement Q4 so that the program first takes the number of names, 
+dynamically allocates memory for that many names, and prevents buffer overflow without using standard libraries."
+
+
+"Review the Q4 implementation and ensure that it uses a C++ class, object, and C++ operators as required by the assignment."
+
 ### Q5
 
 LLM was used to extend the Q4 implementation so that the number of names
@@ -88,6 +105,17 @@ could be changed after the initial input in `MT26145_q5.cpp` and
 and decreasing the number of names while preserving existing names,
 allocating the required new memory, adding new names when necessary,
 and correctly releasing the old memory.
+
+Prompts:
+"Help me extend Q4 for Q5 so that the user can change the number of names after entering the initial names, 
+while preserving existing names and adding or removing names as required."
+
+"Help me validate the Q5 input, including invalid number-of-names input and invalid y/n responses, without using standard C/C++ libraries."
+
+Prompts:
+
+"Review the compilation, linking, memory allocation, input validation, 
+and buffer overflow handling of the assignment programs and help identify and fix errors."
 
 Overall, LLM assistance was used as a development and debugging aid.
 The implementations were manually tested and verified before being
